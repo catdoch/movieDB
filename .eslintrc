@@ -1,0 +1,42 @@
+{ "extends": "eslint-config-airbnb",
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "react/no-multi-comp": 0,
+    "import/default": 0,
+    "import/no-duplicates": 0,
+    "import/named": 0,
+    "import/namespace": 0,
+    "import/no-unresolved": 0,
+    "import/no-named-as-default": 2,
+    "react/jsx-boolean-value": 0,
+    "react/jsx-filename-extension": 0,
+    "comma-dangle": 0,  // don't like this!
+    "indent": [2, 4, {"SwitchCase": 1}],
+    "react/jsx-indent": [2, 4],
+    "react/jsx-indent-props": [2, 4],
+    "no-console": 0,
+    "no-alert": 0,
+    "new-cap": 0, // immutable-js uses non-newed constructors
+    "id-length": 0, // nothing wrong with short names in loops, lambdas etc
+    "allowForLoopAfterthoughts": 0
+  },
+  "plugins": [
+    "react", "import"
+  ],
+  "globals": {
+    "expect": false,
+    "jasmine": false,
+    "spyOn": false
+  },
+  "parser": "babel-eslint",
+  "settings": {
+    "import/parser": "babel-eslint",
+    "import/resolve": {
+      "moduleDirectory": ["js"]
+    }
+  }
+}
