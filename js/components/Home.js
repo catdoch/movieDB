@@ -15,6 +15,7 @@ export default class Home extends Component {
         this.renderAPI = this.renderAPI.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
         this.getAPI = this.getAPI.bind(this);
+        this.search = this.search.bind(this);
     }
 
     getAPI() {
@@ -41,7 +42,9 @@ export default class Home extends Component {
         this.setState({
             [prop]: event.target.value
         });
+    }
 
+    search() {
         this.getAPI();
     }
 
@@ -53,6 +56,7 @@ export default class Home extends Component {
         return (
             <div>
                 <input type="text" name="searchValue" value={this.state.searchValue} onChange={this.handleOnChange} />
+                <button onClick={this.search}>Search</button>
                 { this.renderAPI() }
             </div>
         );

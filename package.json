@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "http-server",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "build:sass": "node-sass sass/* -o build/css"
   },
   "author": "Catriona Docherty",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
     "http-server": "^0.10.0",
+    "node-sass": "^4.5.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "webpack": "^3.6.0"
