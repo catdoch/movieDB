@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import api from './api';
+import api from '../utilities/api';
 import ResultsBlock from './ResultsBlock';
 
 export default class Home extends Component {
@@ -72,11 +72,15 @@ export default class Home extends Component {
         const { data } = this.state;
         let sortedArray = [];
 
-        sortedArray = Object.keys(data).reduce((a, b) => {
-            return data.vote_average[a] > data.vote_average[b] ? a : b
+        sortedArray = data.sort((a, b)=> {
+            return b.popularity - a.popularity;
         });
 
-        console.log(sortedArray);
+        this.setState({
+            data: sortedArray
+        });
+
+        this.renderAPI();
     }
 
 
@@ -92,6 +96,7 @@ export default class Home extends Component {
                     <button className="c-searchInput__button" onClick={this.getAPI}>Search</button>
                 </div>
                 <div className="c-filterBlock">
+                    <p>Filter by:</p>
                     <button className="c-filterBlock_button" onClick={this.filterByPopularity}>Popularity</button>
                 </div>
                 <div className="c-resultsBlock__container">

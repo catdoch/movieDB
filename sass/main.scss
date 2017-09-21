@@ -1,37 +1,69 @@
 body {
-	background-color: #F9F9F9;
-}
-
-.c-header {
-	text-align: center;
+	background-color: #F4F4F4;
+	font-family: 'Open Sans', sans-serif;
 	width: 75%;
 	margin: 0 auto;
 }
 
+.c-header {
+	text-align: center;
+}
+
 .c-callToAction {
-	width: 75%;
     text-align: center;
-    margin: 0 auto;
+    color: #373737;
+    padding-top: 6px;
 }
 
 .c-resultsBlock{
 	&__container {
-		width: 75%;
-		margin: 0 auto;
+		display: flex;
+    	flex-wrap: wrap;
 	}
 	&__card {
-		width: 20%;
+		width: 25%;
 		position: relative;
 		padding: 24px;
 		box-sizing: border-box;
 		display: inline-block;
+		vertical-align: top;
 	}
+	&__cardContainer {
+		width: 100%;
+	    margin: 0;
+	    background: #dcd0c0;
+    	height: 100%;
+
+	    img {
+	    	width: 100%;
+    		display: block;
+    		height: 250px;	
+	    }
+	    p {
+	    	color: #373737;
+	    	font-weight: 500;
+		    margin: 0;
+		    text-align: center;
+		    padding: 12px;
+		    font-size: 14px;
+	    }
+	}
+}
+
+.c-filterBlock_button {
+	background: #c0b283;
+    border: 1px solid #c0b283;
+    padding: 12px;
+    margin: 16px auto 0 auto;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
 }
 
 .c-searchInput {
 	width: 90%;
 	box-sizing: border-box;
-	margin: 48px auto 0 auto;
+	margin: 24px auto 0 auto;
 	height: 48px;
 	border-radius: 3px;
 	border: 1px solid #ddd;
@@ -41,8 +73,8 @@ body {
 
 .c-searchInput__button {
 	height: 48px;
-    background: #953737;
-    border: 1px solid #953737;
+    background: #C0B283;
+    border: 1px solid #C0B283;
     width: 10%;
     font-size: 14px;
     color: #fff;
