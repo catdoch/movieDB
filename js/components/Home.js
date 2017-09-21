@@ -7,33 +7,58 @@ export default class Home extends Component {
         super(props, context);
 
         this.state = {
+            allData: [],
             data: [],
             searchValue: '',
             searchInput: '',
-            showEmpty: false
+            showEmpty: false,
+            allPage: 1,
+            queryPage: 1,
+            showItems: false
         };
 
         this.renderAPI = this.renderAPI.bind(this);
+        this.renderAllAPI = this.renderAllAPI.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
         this.getAPI = this.getAPI.bind(this);
         this.handleEnterSubmit = this.handleEnterSubmit.bind(this);
         this.showEmpty = this.showEmpty.bind(this);
         this.filterByPopularity = this.filterByPopularity.bind(this);
+        this.getPopular = this.getPopular.bind(this);
+        this.loadMore = this.loadMore.bind(this);
+        this.setRender = this.setRender.bind(this);
+    }
+
+    componentDidMount() {
+        this.getPopular();
+    }
+
+    getPopular() {
+        const { allPage } = this.state;
+
+        api.getPopular(allPage)
+            .then((data) => {
+                this.setState({ allData: [...this.state.allData, ...data.results] });
+            });
+
+            this.renderAllAPI();
     }
 
     getAPI() {
-        const { searchValue } = this.state;
+        const { searchValue, queryPage } = this.state;
 
-        api.getSearchAPI(searchValue)
-        .then((data) => {
-            if (data.total_results > 0) {
-                this.setState({
-                    data: data.results
-                });
-            } else {
-                this.setState({ showEmpty: true });
-            }
-        });
+        api.getSearchAPI(searchValue, queryPage)
+            .then((data) => {
+                if (data.total_results > 0) {
+                    this.setState({
+                        data: [...this.state.data, ...data.results]
+                    }, () => {
+                        this.setRender();
+                    });
+                } else {
+                    this.setState({ showEmpty: true });
+                }
+            });
     }
 
 
@@ -54,10 +79,27 @@ export default class Home extends Component {
         return true;
     }
 
-    renderAPI() {
-        const { data } = this.state;
+    renderAllAPI() {
+        const { allData } = this.state;
 
-        return data.map(searchData => <ResultsBlock key={searchData.id} data={searchData} />);
+        if (allData.length) {
+            return allData.map((searchData, index) => <ResultsBlock key={index} data={searchData} />);
+        }
+    }
+
+    setRender() {
+        this.setState({
+            allData: [],
+            showItems:true
+        });
+    }
+
+    renderAPI() {
+        const { data, showItems } = this.state;
+
+        if (showItems) {
+            return data.map((searchData, index) => <ResultsBlock key={index} data={searchData} />);
+        }
     }
 
     showEmpty() {
@@ -83,6 +125,14 @@ export default class Home extends Component {
         this.renderAPI();
     }
 
+    loadMore() {
+        this.setState({
+            allPage: this.state.allPage + 1
+        }, () => {
+            this.getPopular();
+        });
+    }
+
 
     /**
      * Render giftlist
@@ -97,11 +147,13 @@ export default class Home extends Component {
                 </div>
                 <div className="c-filterBlock">
                     <p>Filter by:</p>
-                    <button className="c-filterBlock_button" onClick={this.filterByPopularity}>Popularity</button>
+                    <button className="c-filterBlock__button" onClick={this.filterByPopularity}>Popularity</button>
                 </div>
                 <div className="c-resultsBlock__container">
                     { this.renderAPI() }
+                    { this.renderAllAPI() }
                     { this.showEmpty() }
+                    <button className="c-filterBlock__button" onClick={this.loadMore}>Load more</button>
                 </div>
             </div>
         );
