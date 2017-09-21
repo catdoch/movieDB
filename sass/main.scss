@@ -86,3 +86,37 @@ body {
     font-size: 14px;
     color: #fff;
 }
+
+.loadMore {
+	margin-bottom: 24px;
+}
+
+@media (max-width: 1200px) {
+	.c-resultsBlock__card {
+		width: 33%;
+	}
+}
+
+@media (max-width: 992px) {
+	.c-resultsBlock__card {
+		width: 50%;
+	}
+	.c-searchInput {
+		width: 80%;
+		&__button {
+			width: 20%;
+		}
+	}
+}
+
+@media (max-width: 500px) {
+	.c-resultsBlock__card {
+		width: 100%;
+	}
+	.c-searchInput {
+		width: 70%;
+		&__button {
+			width: 30%;
+		}
+	}
+}

@@ -1,5 +1,5 @@
-var path = require('path');
- var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
      
  module.exports = {
      entry: './js/pages/app.js',
@@ -12,9 +12,7 @@ var path = require('path');
              {
                  test: /\.js$/,
                  loader: 'babel-loader',
-                 query: {
-                     presets: ['es2015', 'react']
-                 }
+                 exclude: /node_modules/
              }
          ]
      },
