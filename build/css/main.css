@@ -1,2 +1,41 @@
 body {
   background-color: #F9F9F9; }
+
+.c-header {
+  text-align: center;
+  width: 75%;
+  margin: 0 auto; }
+
+.c-callToAction {
+  width: 75%;
+  text-align: center;
+  margin: 0 auto; }
+
+.c-resultsBlock__container {
+  width: 75%;
+  margin: 0 auto; }
+
+.c-resultsBlock__card {
+  width: 20%;
+  position: relative;
+  padding: 24px;
+  box-sizing: border-box;
+  display: inline-block; }
+
+.c-searchInput {
+  width: 90%;
+  box-sizing: border-box;
+  margin: 48px auto 0 auto;
+  height: 48px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  padding-left: 24px; }
+
+.c-searchInput__button {
+  height: 48px;
+  background: #953737;
+  border: 1px solid #953737;
+  width: 10%;
+  font-size: 14px;
+  color: #fff; }
