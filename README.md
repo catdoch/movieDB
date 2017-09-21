@@ -1,4 +1,7 @@
 ## Movie DB
+
+Clone repo and run the following:
+
 To run:
 - npm run start
 - go to 127.0.0.1:8080
