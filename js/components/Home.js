@@ -59,7 +59,7 @@ export default class Home extends Component {
                 });
             });
 
-            this.renderAllAPI();
+        this.renderAllAPI();
     }
 
 
@@ -92,6 +92,20 @@ export default class Home extends Component {
 
 
     /**
+     * Set state of
+     * show Items to true
+     * whilst clearing all
+     * data array
+     */
+    setRender() {
+        this.setState({
+            allData: [],
+            showItems: true
+        });
+    }
+
+
+    /**
      * Handle on input change
      * @param  {obj} event
      * @return setState onf input
@@ -106,7 +120,6 @@ export default class Home extends Component {
         });
     }
 
-
     /**
      * Handle submit of enter
      * button
@@ -120,48 +133,6 @@ export default class Home extends Component {
             return false;
         }
         return true;
-    }
-
-
-    /**
-     * Render all most popular
-     * results
-     * @return map of data to ResultsBlock
-     */
-    renderAllAPI() {
-        const { allData } = this.state;
-
-        if (allData.length) {
-            return allData.map((searchData, index) => <ResultsBlock key={index} data={searchData} />);
-        }
-    }
-
-
-    /**
-     * Set state of
-     * show Items to true
-     * whilst clearing all
-     * data array
-     */
-    setRender() {
-        this.setState({
-            allData: [],
-            showItems:true
-        });
-    }
-
-
-    /**
-     * Render API for search
-     * query
-     * @return map of data to ResultsBlock
-     */
-    renderAPI() {
-        const { queryData, showItems } = this.state;
-
-        if (showItems) {
-            return queryData.map((searchData, index) => <ResultsBlock key={index} data={searchData} />);
-        }
     }
 
 
@@ -199,14 +170,6 @@ export default class Home extends Component {
         this.renderAPI();
     }
 
-    loadMore() {
-        this.setState({
-            allPage: this.state.allPage + 1
-        }, () => {
-            this.getPopular();
-        });
-    }
-
 
     /**
      * Load more button
@@ -239,10 +202,38 @@ export default class Home extends Component {
 
 
     /**
+     * Render API for search
+     * query
+     * @return map of data to ResultsBlock
+     */
+    renderAPI() {
+        const { queryData, showItems } = this.state;
+
+        if (showItems) {
+            return queryData.map((searchData, index) => <ResultsBlock key={index} data={searchData} />);
+        }
+    }
+
+
+    /**
+     * Render all most popular
+     * results
+     * @return map of data to ResultsBlock
+     */
+    renderAllAPI() {
+        const { allData } = this.state;
+
+        if (allData.length) {
+            return allData.map((searchData, index) => <ResultsBlock key={index} data={searchData} />);
+        }
+    }
+
+
+    /**
      * Render component
      */
     render() {
-        const { showEmpty, queryShow, allDataShow } = this.state;
+        const { showEmpty, allDataShow } = this.state;
         return (
             <div>
                 <h1 className="c-callToAction">Search for a film below</h1>

@@ -20,7 +20,8 @@ describe('<Home />', () => {
                 vote_average: 6.4
             },
             total_results: 1
-        } ]};
+        }] };
+
         const getDataStub = sinon.stub(API, 'getPopular').resolves(mockResponse);
 
         // Act
@@ -44,7 +45,7 @@ describe('<Home />', () => {
         // Arrange
         const mockResponse = { results: [{
             total_results: 0
-        } ]};
+        }] };
 
         const getDataStub = sinon.stub(API, 'getSearchAPI').resolves(mockResponse);
 
@@ -55,7 +56,6 @@ describe('<Home />', () => {
 
         // Assert
         assert.equal(wrapper.find('.emptyWording').length, 1);
-
     });
 });
 
