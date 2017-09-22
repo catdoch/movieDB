@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 /**
  * Renders the voucher summary 
@@ -10,7 +11,7 @@ const ResultsBlock = ({ data }) => (
     	<div className="c-resultsBlock__cardContainer">
         	<img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${data.poster_path}`} />
         	<p>{ data.title }</p>
-        	<p>{ data.release_date }</p>
+        	<p>{ moment(data.release_date).format('DD/MM/YYYY') }</p>
         </div>
     </div>
 );

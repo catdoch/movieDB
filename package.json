@@ -12,6 +12,7 @@
   "author": "Catriona Docherty",
   "license": "ISC",
   "dependencies": {
+    "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
