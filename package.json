@@ -45,7 +45,7 @@
     "karma-sinon": "^1.0.5",
     "karma-webpack": "^2.0.2",
     "mocha": "^3.5.3",
-    "node-sass": "^4.5.3",
+    "node-sass": "^9.0.0",
     "react-addons": "^0.9.1-deprecated",
     "react-addons-test-utils": "^15.5.1",
     "react-test-renderer": "^15.5.4",
