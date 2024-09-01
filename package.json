@@ -50,6 +50,6 @@
     "react-addons-test-utils": "^15.5.1",
     "react-test-renderer": "^15.5.4",
     "sinon": "^3.3.0",
-    "webpack": "^3.6.0"
+    "webpack": "^5.94.0"
   }
 }
